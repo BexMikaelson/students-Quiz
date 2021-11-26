@@ -9,23 +9,29 @@
     <title>Heidi Sjöberg Quiz-game</title>
 </head>
 <body>
-    <div id="container">
-        <div id="start">Start Quiz!</div>
-        <div id="quiz" style="display: none">
-            <div id="question"></div>
-            <div id="qImg"></div>
-            <div id="choices">
-                <div class="choice" id="A" onclick="checkAnswer('A')"></div>
-                <div class="choice" id="B" onclick="checkAnswer('B')"></div>
-                <div class="choice" id="C" onclick="checkAnswer('C')"></div>
-                <div class="choice" id="D" onclick="checkAnswer('D')"></div>
+    <div class="container">
+        <div id="container">
+            <div class="d-md-flex justify-content-center">
+                <div id="start" class="btn btn-info btn-lg col-12 " role="button" style="margin-top: 100px; margin-bottom: 100px; padding-bottom: 50px; padding-top: 50px; font-size: 5rem;">Start Quiz!</div>
+    
             </div>
             
-            <div id="progress"></div>
+            <div id="quiz" style="display: none">
+                <div id="question"></div>
+                <div id="qImg"></div>
+                <div id="choices">
+                    <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+                    <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+                    <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+                    <div class="choice" id="D" onclick="checkAnswer('D')"></div>
+                </div>
+                
+                <div id="progress"></div>
+            </div>
+            <div id="scoreContainer" style="display: none"></div>
         </div>
-        <div id="scoreContainer" style="display: none"></div>
+    
     </div>
-
     
     
 

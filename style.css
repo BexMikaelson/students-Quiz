@@ -1,72 +1,39 @@
 body{
-    font-size: 20px;
-    font-family: monospace;
+    background-color:snow;
 }
-
-#container{
-    margin : 20px auto;
-    background-color: white;
-    height: 300px;
-    width : 700px;
-    border-radius: 5px;
-    box-shadow: 0px 5px 15px 0px;
-    position: relative;
-}
-#start{
-    font-size: 1.5em;
-    font-weight: bolder;
-    word-break: break-all;
-    width:100px;
-    height:150px;
-    border : 2px solid lightgrey;
-    text-align: center;
-    cursor: pointer;
-    position: absolute;
-    left:300px;
-    top:50px;
-    color : lightgrey;
-}
-#start:hover{
-    border: 3px solid lightseagreen;
-    color : lightseagreen;
+#question p{
+    padding-top : 15px;
+    padding-left: 45px;
+    font-size: 1.25em;
 }
 
 #qImg{
-    width : 200px;
-    height : 200px;
-    position: absolute;
+    width : 100px;
+    height : auto;
+    position: absolute; 
     left : 0px;
     top : 0px;
-}
-#qImg img{
-    width : 200px;
-    height : 200px;
-    border-top-left-radius: 5px;
+    
 }
 
-#question{
-    width:500px;
-    height : 125px;
-    position: absolute;
-    right:0;
-    top:0;
-}
-#question p{
-    margin : 0;
-    padding : 15px;
-    font-size: 1.25em;
+#qImg img{
+    width : 250px;
+    height : auto;
+    margin-top: 60px;
+    margin-left: 65px;
+    
 }
 
 #choices{
     width : 400px;
     position: absolute;
-    right : 0;
-    top : 125px;
+    left : 80px;
+    top : 330px;
     padding : 10px
 }
 .choice{
     display: inline-block;
-    width : 135px;
+    width : 200px;
     text-align: center;
     border : 1px solid grey;
     border-radius: 5px;
@@ -79,14 +46,10 @@ body{
     font-weight: bold;
 }
 
-
 #progress{
-    width : 500px;
-    position: absolute;
-    bottom : 0px;
-    right : 0px;
-    padding:5px;
-    text-align: right;
+    width : 300px;
+    margin-top: 500px;
+    padding-left: 70px;
 }
 .prog{
     width : 25px;
@@ -97,30 +60,99 @@ body{
     margin-left : 5px;
     margin-right : 5px;
 }
-#scoreContainer{
-    margin : 20px auto;
-    background-color: white;
-    opacity: 0.8;
-    height: 300px;
-    width : 700px;
-    border-radius: 5px;
-    box-shadow: 0px 5px 15px 0px;
-    position: relative;
-    display: none;
+
+
+@media only screen and (min-width: 768px){
+    #question p{
+        margin-left: 50px;
+        font-size: 3rem;
+    }
+
+    #qImg img{
+        width : 500px;
+        height : auto;
+        margin-top: 90px;
+        margin-left: 130px;
+        
+    }
+
+    #choices{
+        width : 400px;
+        
+        left : 180px;
+        top : 600px;
+        padding : 10px
+    }
+
+    .choice{
+        width : 400px;
+        padding : 20px;
+       
+    }
+
+    #progress{
+        width : 580px;
+        margin-top: 850px;
+        margin-left: 40px;
+    }
+    
+
 }
-#scoreContainer img{
-    position: absolute;
-    top:100px;
-    left:325px;
+@media only screen and (min-width: 998px){
+    #question p{
+        margin-left: 130px;
+        font-size: 3rem;
+    }
+
+    #qImg img{
+        width : 350px;
+        height : auto;
+        margin-top: 110px;
+        margin-left: 200px;
+        
+    }
+
+    #choices{
+        width : 400px;
+        
+        left : 600px;
+        top : 125px;
+        padding : 10px
+    }
+
+    #progress{
+        width : 700px;
+        margin-top: 380px;
+        margin-left: 210px;
+    }
+    
 }
-#scoreContainer p{
-    position: absolute;
-    display: block;
-    width : 59px;
-    height :59px;
-    top:130px;
-    left:325px;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
+
+/*@media only screen and (min-width: 1024px){
+    #question p{
+        margin-left: 100px;
+        font-size: 3rem;
+    }
+
+    #qImg img{
+        width : 350px;
+        margin-left: 100px;
+        
+    }
+
+    #choices{
+        width : 400px;
+        position: absolute;
+        left : 500px;
+        top : 125px;
+        padding : 10px
+    }
+
+    #progress{
+        width : 700px;
+        margin-top: 380px;
+        margin-left: 150px;
+    }
+    
+
 }
