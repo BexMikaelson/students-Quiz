@@ -171,9 +171,9 @@ const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
 
 
-/*
- 💥 detta är den nya questions, där vi anropar createQuestion för varje gång i arrayen där vi vill ha en question. Så totalt 3st
-*/
+
+ //anropar createQuestion för varje gång i arrayen där man vill ha en question.
+
 let questions = createQuestions()
 
 // create some variables
@@ -183,54 +183,37 @@ let count = 0;
 let score = 0;
 
 
-// 💥 Denna funktionen loopar över alla students
+// Denna funktionen loopar över alla students
 // sen tar den varje student och skickar in den studenten som "correctAnswer"
 // till vår createQuestion
-// sen får vi tillbaka vår question och pushar in den i vår array
 function createQuestions() {
 	const questions = []
-	for (student of students) {
-		const q = createQuestion(student)
+	for (names of students) {
+		const q = createQuestion(names)
 		questions.push(q)
 	}
-	return questions
+	return questions;
 }
 
 // create question
 function createQuestion(correctAnswer) {
-	// 💥 Detta är den nya funktionen.
- /*
-		Jag har tagit tillbaka renderQuestion-funktionen som den var tidigare.
-		Jag har lagt över det i denna funktionen som heter createQuestion
-		Denna skapar en question precis så den ser likadan ut som  din array "questions gör"
- */
+	
 	const randomNumber = () => {
-		return Math.floor(Math.random() * students.length)
+		return Math.floor(Math.random() * students.length);
 	}
 
 	const questionName = "Guess the name?";
-	const wrongAnswers = [] // ['heidi', 'dandan', 'max']
-	// denna är ny, vi vill ha 4 olika alternativ som vi har i en array som heter abcd. på denna arrayen så gör vi en
-	// sortering  (.sort) som i detta fallet gör att den blir helt slumpmässig så abcd blir -> badc typ
-	const options = ['A', 'B', 'C', 'D'].sort((a, b) => 0.5 - Math.random())
+	const wrongAnswers = [];
+	const options = ['A', 'B', 'C', 'D'].sort((a, b) => 0.5 - Math.random());
 
 	while (wrongAnswers.length < 3) {
 		const randomStudent = students[randomNumber()]
 		if (randomStudent !== correctAnswer) {
-			//denna har jag ändrat så vi istället skickar in randomstudent.name istället för hele objektet på en randomstudent
-			wrongAnswers.push(randomStudent.name)
+			
+			wrongAnswers.push(randomStudent.name);
 		}
 	}
-	// Här bygger vi upp vår question så den ser likadan ut som din tidigare array Questions
-	// correct (answer) options[0] blir första i arrayen(som är slumpmässig)
-	// options[0] blir då correct answer så vi skriver ut det
-	// sen skriver vi upp de andra options[1] etc. med våra 3 wrongAnswers
-	// det går att loopa ut detta om du vill men detta är tillräckligt
-	// när vi skriver:
-	// {
-	//  ['choice' + options[0]]
-	// }
-	// så sätter vi ett namn på propertyn på objektet som kommer heta "choice + något" som i detta fallet blir choiceA, choiceB etc
+	
 	const q = {
 		question: questionName,
 		imgSrc: correctAnswer.image,
@@ -241,7 +224,7 @@ function createQuestion(correctAnswer) {
 		['choice' + options[3]]: wrongAnswers[2]
 	}
 
-	return q
+	return q;
 }
 
 // render a question
@@ -274,26 +257,7 @@ function renderProgress() {
 	}
 }
 
-
-start.addEventListener("click", startQuiz);
-
-// start quiz
-function startQuiz() {
-	start.style.display = "none";
-	renderQuestion();
-	quiz.style.display = "block";
-	renderProgress();
-
-}
-
-// render progress
-function renderProgress() {
-	for (let qIndex = 0;qIndex <= lastQuestion;qIndex++) {
-		progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>";
-	}
-}
 // checkAnwer
-
 function checkAnswer(answer) {
 	if (answer == questions[runningQuestion].correct) {
 		// answer is correct
@@ -329,29 +293,12 @@ function answerIsWrong() {
 // score render
 function scoreRender() {
 	scoreDiv.style.display = "block";
-	console.log(score)
+
 	// calculate the amount of question percent answered by the user
 	const scorePerCent = Math.round(100 * score / questions.length);
 	const numberOfQuestions = questions.length
 
-	// choose the image based on the scorePerCent
-	let img;
-	const gold = 'https://img.favpng.com/13/20/7/vector-graphics-clip-art-trophy-image-royalty-free-png-favpng-wh3LvJuUNgX2YtddMqjVr9sMu.jpg'
-	const silver = ''
-	const bronze = ''
-
-	if (scorePerCent > 90) {
-		img = gold
-	} else if (scorePerCent > 50) {
-		img = silver
-	} else {
-		img = bronze
-	}
-
-	const html = `
-	<img src="${img}">
-	Dina poäng är: ${score} av ${numberOfQuestions} (${scorePerCent}% rätt)
-	`;
+	const html = `Dina poäng är: ${score} av ${numberOfQuestions} (${scorePerCent}% rätt)`;
 
 	scoreDiv.innerHTML = html;
 
